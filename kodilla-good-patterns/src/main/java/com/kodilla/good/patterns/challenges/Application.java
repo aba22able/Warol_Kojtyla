@@ -5,5 +5,13 @@ public class Application {
         MovieStore store = new MovieStore();
 
         store.moviesReader();
+
+        ProductOrderService service = new ProductOrderService(new RentalInformer(), new OrderCreation(), new Repository());
+
+        Repository repository = new Repository();
+
+        RentRequest request1 = repository.createOrder();
+
+        service.process(request1);
     }
 }

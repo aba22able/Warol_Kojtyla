@@ -15,9 +15,9 @@ public class ProductOrderService {
     }
 
     public RentalDto process(final RentRequest rentRequest) {
-        boolean isRented = orderService.rent();
+        boolean isOrdered = orderService.rent();
 
-        if (isRented) {
+        if (isOrdered) {
             informationService.inform(rentRequest.getUser());
             orderRepository.createOrder();
             return new RentalDto(rentRequest.getUser(), true);

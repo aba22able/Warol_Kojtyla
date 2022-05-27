@@ -12,18 +12,42 @@ public class CalculatorTestSuite
     Calculator calculator;
 
     @Test
-    public void testCalculations()
+    public void testCalculationsAdd()
     {
         //Given
         //When
         double addingResult = calculator.add(2, 2);
-        double subResult = calculator.sub(2, 2);
-        double mulResult = calculator.mul(2, 2);
-        double divResult = calculator.div(2, 2);
         //Then
         Assertions.assertEquals(4, addingResult);
+    }
+
+    @Test
+    public void testCalculationsSub()
+    {
+        //Given
+        //When
+        double subResult = calculator.sub(2, 2);
+        //Then
         Assertions.assertEquals(0, subResult);
+    }
+
+    @Test
+    public void testCalculationsMul()
+    {
+        //Given
+        //When
+        double mulResult = calculator.mul(2, 2);
+        //Then
         Assertions.assertEquals(4, mulResult);
+    }
+
+    @Test
+    public void testCalculationsDiv()
+    {
+        //Given
+        //When
+        double divResult = calculator.div(2, 2);
+        //Then
         Assertions.assertEquals(1, divResult);
     }
 }

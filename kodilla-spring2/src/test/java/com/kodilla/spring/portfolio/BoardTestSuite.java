@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.Arrays;
 import java.util.List;
 
 @SpringBootTest
@@ -16,8 +17,9 @@ public class BoardTestSuite
     {
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
-        TaskList taskList = context.getBean(TaskList.class);
+        Board board = context.getBean(Board.class);
         //When
+        TaskList taskList = board.getToDoList();
         List<String> list1 = taskList.getTasks();
         list1.add("Example1");
         //Then
@@ -29,8 +31,9 @@ public class BoardTestSuite
     {
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
-        TaskList taskList = context.getBean(TaskList.class);
+        Board board = context.getBean(Board.class);
         //When
+        TaskList taskList = board.getToDoList();
         List<String> list2 = taskList.getTasks();
         list2.add("Example2");
         //Then
@@ -42,11 +45,25 @@ public class BoardTestSuite
     {
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
-        TaskList taskList = context.getBean(TaskList.class);
+        Board board = context.getBean(Board.class);
         //When
+        TaskList taskList = board.getToDoList();
         List<String> list3 = taskList.getTasks();
         list3.add("Example3");
         //Then
         Assertions.assertEquals("Example3", list3.get(0));
+    }
+    @Test
+    public void showBeans()
+    {
+        //Given
+        ApplicationContext context =
+                new AnnotationConfigApplicationContext("com.kodilla.spring.portfolio");
+
+        //When & Then
+        System.out.println("===== Beans list: ==== >>");
+        Arrays.stream(context.getBeanDefinitionNames())
+                .forEach(System.out::println);
+        System.out.println("<< ===== Beans list ====");
     }
 }

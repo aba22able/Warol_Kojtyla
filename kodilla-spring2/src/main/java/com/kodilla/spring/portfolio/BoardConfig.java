@@ -22,27 +22,27 @@ public class BoardConfig
     @Bean
     public Board board()
     {
-        return new Board(taskListToDo,taskListInProgress,taskListDone);
+        return new Board(getTaskListToDo(),getTaskListInProgress(),getTaskListDone());
     }
 
     @Bean(name = "ToDo")
     @Scope("prototype")
     public TaskList getTaskListToDo()
     {
-        return new TaskList(taskListToDo.getTasks());
+        return new TaskList();
     }
 
     @Bean(name = "InProgress")
     @Scope("prototype")
     public TaskList getTaskListInProgress()
     {
-        return new TaskList(taskListInProgress.getTasks());
+        return new TaskList();
     }
 
     @Bean(name = "Done")
     @Scope("prototype")
     public TaskList getTaskListDone()
     {
-        return new TaskList(taskListDone.getTasks());
+        return new TaskList();
     }
 }

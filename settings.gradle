@@ -5,4 +5,5 @@ include 'kodilla-spring2'
 include 'kodilla-spring-web'
 include 'kodilla-patterns'
 include 'kodilla-testing'
+include 'kodilla-jdbc'
 

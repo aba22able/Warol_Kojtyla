@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 public class Item
 {
     private int id;
-//    private Product product;
+    private Product product;
     private BigDecimal price;
     private int quantity;
     private BigDecimal value;
@@ -76,13 +76,15 @@ public class Item
         this.invoice = invoice;
     }
 
-//    @ManyToOne
-//    @JoinColumn(name = "PRODUCTS_ID")
-//    public Product getProduct() {
-//        return product;
-//    }
-//
-//    public void setProduct(Product product) {
-//        this.product = product;
-//    }
+    @ManyToOne(
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(name = "PRODUCTS_ID")
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 }

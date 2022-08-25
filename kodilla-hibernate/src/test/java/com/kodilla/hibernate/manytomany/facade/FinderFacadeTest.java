@@ -17,10 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class FinderFacadeTest
 {
     @Autowired
-    private CompanyDao companyDao;
-
-    @Autowired
-    private EmployeeDao employeeDao;
+    private FinderFacade facade;
 
     @Test
     public void findCompanyTxtFragmentTest()
@@ -29,7 +26,7 @@ class FinderFacadeTest
         String fragment = "Kat";
 
         //When
-        List<Company> foundCompanies = companyDao.retrieveCompanyTxtFragment(fragment);
+        List<Company> foundCompanies = facade.retrieveCompanyTxtFragment(fragment);
 
         //Then
         assertEquals(1, foundCompanies.size());
@@ -42,7 +39,7 @@ class FinderFacadeTest
         String fragment = "tyl";
 
         //When
-        List<Employee> foundEmployees = employeeDao.retrieveEmployeeTxtFragment(fragment);
+        List<Employee> foundEmployees = facade.retrieveEmployeeTxtFragment(fragment);
 
         //Then
         assertEquals(1, foundEmployees.size());

@@ -1,24 +1,27 @@
 package com.kodilla.hibernate.manytomany.facade;
 
+
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
+import com.kodilla.hibernate.manytomany.dao.CompanyDao;
+import com.kodilla.hibernate.manytomany.dao.EmployeeDao;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.NamedQuery;
-
-
-@NamedQuery(
-        name = "Company.retrieveCompanyTxtFragment",
-        query = "FROM Company WHERE company LIKE :%FRAGMENT%"
-)
-
-@NamedQuery(
-        name = "Employee.retrieveEmployeeTxtFragment",
-        query = "FROM Employee WHERE employee LIKE :%FRAGMENT%"
-)
+import java.util.List;
 
 @Service
-public class FinderFacade
-{
+public class FinderFacade {
 
+    private CompanyDao companyDao;
+    private EmployeeDao employeeDao;
+
+    public List<Company> retrieveCompanyTxtFragment(String fragment)
+    {
+        return companyDao.retrieveCompanyTxtFragment(fragment);
+    }
+
+    public List<Employee> retrieveEmployeeTxtFragment(String fragment)
+    {
+        return employeeDao.retrieveEmployeeTxtFragment(fragment);
+    }
 }

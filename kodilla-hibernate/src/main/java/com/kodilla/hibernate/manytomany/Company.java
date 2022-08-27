@@ -7,7 +7,7 @@ import java.util.List;
 
 @NamedQuery(
         name = "Company.retrieveCompanyTxtFragment",
-        query = "FROM Company WHERE company LIKE :%FRAGMENT%"
+        query = "FROM Company WHERE company_name LIKE :FRAGMENT"
 )
 
 @NamedNativeQuery(

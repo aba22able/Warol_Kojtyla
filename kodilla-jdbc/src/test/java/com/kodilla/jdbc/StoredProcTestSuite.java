@@ -18,14 +18,14 @@ public class StoredProcTestSuite {
         Statement statement = dbManager.getConnection().createStatement();
         statement.executeUpdate(sqlUpdate);
         String sqlCheckTable = "SELECT COUNT(*) AS HOW_MANY FROM READERS WHERE VIP_LEVEL=\"Not set\"";
-//        Statement statement1 = dbManager.getConnection().createStatement();
-        ResultSet rs = statement.executeQuery(sqlCheckTable);
 
         // When
         String sqlProcedureCall = "CALL UpdateVipLevels()";
         statement.execute(sqlProcedureCall);
 
         // Then
+        ResultSet rs = statement.executeQuery(sqlCheckTable);
+
         int howMany = -1;
         if (rs.next()) {
             howMany = rs.getInt("HOW_MANY");
@@ -43,13 +43,14 @@ public class StoredProcTestSuite {
         Statement statement = dbManager.getConnection().createStatement();
         statement.executeUpdate(sqlUpdate);
         String sqlCheckTable = "SELECT COUNT(*) AS HOW_MANY FROM BOOKS WHERE BESTSELLER=0";
-        ResultSet rs = statement.executeQuery(sqlCheckTable);
 
         // When
         String sqlProcedureCall = "CALL UpdateBestSellers()";
         statement.execute(sqlProcedureCall);
 
         // Then
+        ResultSet rs = statement.executeQuery(sqlCheckTable);
+
         int howMany = -1;
         if (rs.next()) {
             howMany = rs.getInt("HOW_MANY");
